@@ -1,0 +1,5 @@
+CREATE TABLE files (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    location VARCHAR(512) NOT NULL,
+    status VARCHAR(32)
+);

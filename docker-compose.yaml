@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:latest
+    container_name: db-container
+    environment:
+      - MYSQL_DATABASE=aws_file_storage
+      - MYSQL_ROOT_PASSWORD=eugene
+      - MYSQL_USER=eugene
+      - MYSQL_PASSWORD=eugene
+    ports:
+      - "3306:3306"
+
+
+  server:
+    build: .
+    image: server-image
+    container_name: server-container
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    command: ["dockerize", "-wait", "tcp://db:3306", "-timeout", "20s", "java", "-jar", "/app.jar"]

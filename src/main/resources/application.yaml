@@ -1,0 +1,32 @@
+server:
+  port: 8083
+
+spring:
+  r2dbc:
+    url: r2dbc:pool:mysql://db:3306/aws_file_storage
+    username: eugene
+    password: eugene
+
+jwt:
+  password:
+    encoder:
+      secret: X3cPv1nR2kWb7zE4fH5gT8mJqL0pU3yV
+      iteration: 64
+      keylength: 256
+  secret: 9f8d2b6f2c3a4b5d8e7f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d
+  expiration: 3600
+  issuer: milko
+
+cloud:
+  aws:
+    credentials:
+      access-key: INSERT_YOUR_KEY
+      secret-key: INSERT_YOUR_KEY
+    region:
+      static: ap-southeast-2
+    stack:
+      auto: false
+
+application:
+  bucket:
+    name: aws.milko-file-storage
